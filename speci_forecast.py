@@ -280,7 +280,7 @@ metars = get_metar(oaci,con)
 
 
 #open algorithm dir d0 d1
-alg = pickle.load(open("speci_""+oaci+"_d0.al","rb"))
+alg = pickle.load(open("speci_"+oaci+"_d0.al","rb"))
 #alg1 = pickle.load(open(algo_dir+"speci_"+OACI+"_d1.al","rb"))
 
 #select model variables
