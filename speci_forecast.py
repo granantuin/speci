@@ -7,7 +7,7 @@ Original file is located at
     https://colab.research.google.com/drive/1uXXiN8QN0ayu2HFn9gb8kdjVpYJqw54_
 """
 
-
+import streamlit as st
 import numpy as np
 import pandas as pd
 from datetime import timedelta
