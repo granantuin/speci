@@ -240,22 +240,22 @@ st.set_page_config(page_title="Airport SPECI forecast",layout="wide")
 options = ["LECO", "LEST","LEVX"]
 default_option = options[0]  # Set the default option
 # Create a radio button to select the string variable
-OACI = st.radio("Select airport", options, index=0)
+oaci = st.radio("Select airport", options, index=0)
 
-#score machine learning versus WRF
+coor = pd.read_csv(oaci+"coor.csv")
+
+if oaci=="LEVX":
+  meteo_model = get_meteogalicia_model_1Km(coor)[0]
+
+if oaci=="LEST":
+  meteo_model = get_meteogalicia_model_4Km(coor)[0]
+
+if oaci=="LECO":
+  meteo_model = get_meteogalicia_model_4Km(coor)[0]
 
 
 # Set the directory you want to list algorithms filenames from
-algo_dir = "/content/drive/MyDrive/Colab Notebooks/airport_ml/"+OACI+"/algorithms/"
-
-#grid type
-k4 = ["LECO","LEST"]
-k12 = ["LEBL","LEPP"]
-
-if OACI in k4:
-    meteo_model,con = get_meteogalicia_model_4Km(pickle.load(open(algo_dir+os.listdir(algo_dir)[0],"rb"))["coor"])
-else:
-    meteo_model,con = get_meteogalicia_model_12Km(pickle.load(open(algo_dir+os.listdir(algo_dir)[0],"rb"))["coor"])
+#algo_dir = "/content/drive/MyDrive/Colab Notebooks/airport_ml/"+OACI+"/algorithms/"
 
 #get meteorological model from algorithm file. Select "coor" key to get coordinates. Pick up first algorithm all same coordinates
 #meteo_model,con = get_meteogalicia_model_4Km(pickle.load(open(algo_dir+"dir_"+OACI+"_d0.al","rb"))["coor"])
@@ -271,7 +271,7 @@ meteo_model["weekofyear"] = meteo_model.index.isocalendar().week.astype(int)
 #print("meteorological model info")
 #print(meteo_model.info())
 
-metars = get_metar(OACI,con)
+metars = get_metar(oaci,con)
 #print(" ### **Metars**")
 #display(metars["metar_o"])
 
@@ -280,7 +280,7 @@ metars = get_metar(OACI,con)
 
 
 #open algorithm dir d0 d1
-alg = pickle.load(open(algo_dir+"speci_"+OACI+"_d0.al","rb"))
+alg = pickle.load(open("speci_""+oaci+"_d0.al","rb"))
 #alg1 = pickle.load(open(algo_dir+"speci_"+OACI+"_d1.al","rb"))
 
 #select model variables
