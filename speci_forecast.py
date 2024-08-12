@@ -8,21 +8,13 @@ Original file is located at
 """
 
 
-import os
-import sys
-sys.path.append('/content/drive/MyDrive/Colab Notebooks/airport_ml')
 import numpy as np
 import pandas as pd
 from datetime import timedelta
-from io import BytesIO
 import base64
 import pickle
 import warnings
-import matplotlib.pyplot as plt
-import seaborn as sns
-from sklearn.metrics import accuracy_score
-from sklearn.metrics import mean_absolute_error
-from IPython.display import display
+
 
 def Hss(cm):
      """
