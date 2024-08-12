@@ -271,7 +271,7 @@ meteo_model["weekofyear"] = meteo_model.index.isocalendar().week.astype(int)
 #print("meteorological model info")
 #print(meteo_model.info())
 
-metars = get_metar(oaci,con)
+metars = get_metar(oaci,True)
 #print(" ### **Metars**")
 #display(metars["metar_o"])
 
