@@ -7,13 +7,7 @@ Original file is located at
     https://colab.research.google.com/drive/1uXXiN8QN0ayu2HFn9gb8kdjVpYJqw54_
 """
 
-#!pip install lightgbm==3.1.1
 
-#@title Operational
-OACI = "LEVX" #@param ["LEST", "LECO","LEVX"]
-print(OACI, "AIRPORT")
-
-#!pip install -r "/content/drive/MyDrive/Colab Notebooks/LEVX_1km/requirements.txt"
 import os
 import sys
 sys.path.append('/content/drive/MyDrive/Colab Notebooks/airport_ml')
@@ -250,7 +244,11 @@ def get_meteogalicia_model_12Km(coorde):
 
 warnings.filterwarnings("ignore")
 
-
+st.set_page_config(page_title="Airport SPECI forecast",layout="wide")
+options = ["LECO", "LEST","LEVX"]
+default_option = options[0]  # Set the default option
+# Create a radio button to select the string variable
+OACI = st.radio("Select airport", options, index=0)
 
 #score machine learning versus WRF
 
@@ -312,4 +310,4 @@ df_for = pd.DataFrame({"time":ml_x_var.index,
                        "speci_prob":prob_speci_ml[:, 1]})
 df_for = df_for.set_index("time")
 df_for['speci_prob'] = df_for['speci_prob'].apply(lambda x: f"{x:.0%}" if pd.notnull(x) else x)
-pd.concat([df_for,metars["metar_o"]],axis=1)
+st.write(pd.concat([df_for,metars["metar_o"]],axis=1))
