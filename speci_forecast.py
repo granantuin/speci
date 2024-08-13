@@ -16,22 +16,6 @@ import pickle
 import warnings
 
 
-def Hss(cm):
-     """
-     obtain de Heidke skill score from a 3x3 confusion matrix (margins=on)
-
-     Returns: Heidke skill score
-     """
-     if cm.shape == (3,3):
-          a = cm.values[0,0]
-          b = cm.values[1,0]
-          c = cm.values[0,1]
-          d = cm.values[1,1]
-          HSS = round(2*(a*d-b*c)/((a+c)*(c+d)+(a+b)*(b+d)),2)
-     else:
-          HSS = 0
-     return HSS
-
 
 def get_metar(oaci,control):
      """
