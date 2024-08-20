@@ -296,7 +296,7 @@ default_option = options[0]  # Set the default option
 # Create a radio button to select the string variable
 oaci = st.radio("Select airport", options, index=0)
 
-coor = pd.read_csv("/data/"+oaci+"coor.csv")
+coor = pd.read_csv("data/"+oaci+"coor.csv")
 
 if oaci=="LEVX":
   meteo_model = get_meteogalicia_model_1Km(coor)[0]
@@ -334,7 +334,7 @@ metars = get_metar(oaci,True)
 
 
 #open algorithm dir d0 d1
-alg = pickle.load(open("/algorithms/"+"speci_"+oaci+"_d0.al","rb"))
+alg = pickle.load(open("algorithms/"+"speci_"+oaci+"_d0.al","rb"))
 #alg1 = pickle.load(open(algo_dir+"speci_"+OACI+"_d1.al","rb"))
 
 #select model variables
