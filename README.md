@@ -19,9 +19,9 @@ This project aims to predict the likelihood of issuing a SPECI report (a special
 ```bash
 
 ├── notebooks/                # Jupyter notebooks for training models (named with ICAO airport codes)
-├── models/                   # Pre-trained models (.al files) named with ICAO airport codes
+├── algorithms/               # Pre-trained algorithms (.al files) named with ICAO airport codes
 ├── data/                     # CSV files containing coordinates of the nearest meteorological model points
-├── speci_forecast.py         # Script for deploying the model using Streamlit
+├── speci_forecast.py         # Script for deploying the algorithm using Streamlit
 ├── requirements.txt          # Required Python packages and dependencies
 └── README.md                 # Project documentation (this file)
 ```
@@ -36,7 +36,7 @@ The models are trained using Jupyter notebooks available in the `notebooks/` dir
 
 - **notebooks/**: Contains Jupyter notebooks for training machine learning models for different airports. The notebooks are named according to the ICAO code of the airport (e.g., `LEST.ipynb` for Santiago de Compostela Airport).
 
-- **models/**: Contains pre-trained machine learning models saved as `.al` files. These files are also named according to the ICAO code of the airport.
+- **algorithm/**: Contains pre-trained machine learning models saved as `.al` files. These files are also named according to the ICAO code of the airport.
 
 - **data/**: Contains CSV files with the coordinates of the nearest meteorological model points to each airport.
 
